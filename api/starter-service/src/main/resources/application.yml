@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: TEST-SERVICE
+#  cloud:
+#    stream:
+#      bindings:
+#        contactDeleted:
+#          destination: contact-deleted
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
