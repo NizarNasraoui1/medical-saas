@@ -12,7 +12,6 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { RippleModule } from 'primeng/ripple';
 import { AppMenuitemComponent } from './components/menue-item/app.menuitem.component';
 import { RouterModule } from '@angular/router';
-import { AppConfigModule } from './components/config/config.module';
 import { AppLayoutComponent } from "./app.layout.component";
 import { AppFooterComponent } from './components/footer/app.footer.component';
 import { AppSidebarComponent } from './components/sidebar/app.sidebar.component';
@@ -39,7 +38,6 @@ import { AppMenuComponent } from './components/menu/app.menu.component';
         InputSwitchModule,
         RippleModule,
         RouterModule,
-        AppConfigModule
     ],
     exports: [AppLayoutComponent]
 })
