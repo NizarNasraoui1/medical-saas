@@ -47,8 +47,15 @@ public class TreatmentPlanServiceImpl implements TreatmentPlanService{
     @Override
     public PageResponseDTO<TreatmentPlanDto> searchTreatmentPlanPage(int pageNumber, int pageSize, String name) {
         PageRequest pageRequest = PageRequest.of(pageNumber,pageSize,Sort.Direction.ASC,"date");
-        Specification<TreatmentPlan> specification = ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("name"),name));
-        Page<TreatmentPlan> treatmentPlansPage = treatmentPlanRepository.findAll(specification,pageRequest);
+        Page<TreatmentPlan> treatmentPlansPage;
+        if(!name.isEmpty()){
+            String likePattern = "%"+name+"%";
+            Specification<TreatmentPlan> specification = ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("name"),likePattern));
+            treatmentPlansPage = treatmentPlanRepository.findAll(specification,pageRequest);
+        }
+        else{
+            treatmentPlansPage = treatmentPlanRepository.findAll(pageRequest);
+        }
         List<TreatmentPlanDto> treatmentPlanDtos = treatmentPlanMapper.toDtos(treatmentPlansPage.getContent());
         PageResponseDTO<TreatmentPlanDto> pageResponseDTO = new PageResponseDTO<>();
         pageResponseDTO.setContent(treatmentPlanDtos);
