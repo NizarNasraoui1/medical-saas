@@ -5,24 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import treatment_plan_service.enumeration.OperationStatus;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class TreatmentPlan {
+public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String patientName;
-    private String description;
     private LocalDate date;
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "treatmentPlan")
-    private List<Operation> operations = new ArrayList<>();
+    private String desciption;
+    private String name;
+    private OperationStatus status;
+    @ManyToOne
+    @JoinColumn(name="treatment_plan_id",referencedColumnName = "id")
+    private TreatmentPlan treatmentPlan;
 }

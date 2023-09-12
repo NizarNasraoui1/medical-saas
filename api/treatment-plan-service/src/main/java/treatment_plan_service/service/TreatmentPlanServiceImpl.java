@@ -6,9 +6,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import treatment_plan_service.dto.OperationDto;
 import treatment_plan_service.dto.PageResponseDTO;
 import treatment_plan_service.dto.TreatmentPlanDto;
+import treatment_plan_service.entity.Operation;
 import treatment_plan_service.entity.TreatmentPlan;
+import treatment_plan_service.mapper.OperationMapper;
 import treatment_plan_service.mapper.TreatmentPlanMapper;
 import treatment_plan_service.repository.TreatmentPlanRepository;
 
@@ -21,9 +24,12 @@ public class TreatmentPlanServiceImpl implements TreatmentPlanService{
 
     private final TreatmentPlanMapper treatmentPlanMapper;
 
-    public TreatmentPlanServiceImpl(TreatmentPlanRepository treatmentPlanRepository, TreatmentPlanMapper treatmentPlanMapper) {
+    private final OperationMapper operationMapper;
+
+    public TreatmentPlanServiceImpl(TreatmentPlanRepository treatmentPlanRepository, TreatmentPlanMapper treatmentPlanMapper, OperationMapper operationMapper) {
         this.treatmentPlanRepository = treatmentPlanRepository;
         this.treatmentPlanMapper = treatmentPlanMapper;
+        this.operationMapper = operationMapper;
     }
 
 
@@ -49,6 +55,16 @@ public class TreatmentPlanServiceImpl implements TreatmentPlanService{
         pageResponseDTO.setPage(treatmentPlansPage.getNumber());
         pageResponseDTO.setTotalPages(treatmentPlansPage.getTotalPages());
         pageResponseDTO.setSize(treatmentPlansPage.getSize());
+        pageResponseDTO.setTotalElements(treatmentPlansPage.getTotalElements());
         return pageResponseDTO;
+    }
+
+    @Override
+    public TreatmentPlanDto addOperationToTreatmentPlan(Long id,OperationDto operationDto) {
+        TreatmentPlan treatmentPlan = treatmentPlanRepository.findById(id).orElseThrow(()-> new EntityNotFoundException());
+        Operation operation = operationMapper.toBo(operationDto);
+        treatmentPlan.getOperations().add(operation);
+        treatmentPlanRepository.save(treatmentPlan);
+        return treatmentPlanMapper.toDto(treatmentPlan);
     }
 }

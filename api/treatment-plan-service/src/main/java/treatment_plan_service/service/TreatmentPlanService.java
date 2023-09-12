@@ -1,5 +1,6 @@
 package treatment_plan_service.service;
 
+import treatment_plan_service.dto.OperationDto;
 import treatment_plan_service.dto.PageResponseDTO;
 import treatment_plan_service.dto.TreatmentPlanDto;
 
@@ -10,4 +11,6 @@ public interface TreatmentPlanService {
     public TreatmentPlanDto getTreatmentPlanById(Long id);
 
     public PageResponseDTO<TreatmentPlanDto> searchTreatmentPlanPage(int pageNumber, int pageSize, String name);
+
+    public TreatmentPlanDto addOperationToTreatmentPlan(Long id,OperationDto operationDto);
 }
