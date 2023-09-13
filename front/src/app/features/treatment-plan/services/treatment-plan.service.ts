@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 import { TreatmentPlan } from '../models/treatment-plan';
 import { PageResponseDTO } from 'src/app/shared/models/page-response';
+import { Operation } from '../models/operation';
 
 const TREATMENT_PLAN_URL = '/api/treatment-plan';
 
@@ -16,7 +17,7 @@ export class TreatmentPlanService {
         return this.httpUtilService.post(TREATMENT_PLAN_URL, treatmentPlan);
     }
 
-    getTreatmentPlanById(id: number): Observable<TreatmentPlan> {
+    getTreatmentPlanById(id: string): Observable<TreatmentPlan> {
         return this.httpUtilService.get(`${TREATMENT_PLAN_URL}/${id}`);
     }
 
@@ -30,5 +31,9 @@ export class TreatmentPlanService {
             size: size,
             name: name,
         });
+    }
+
+    addOperationToTreatmentPlan(id:number,operation:Operation): Observable<TreatmentPlan> {
+        return this.httpUtilService.post(`${TREATMENT_PLAN_URL}/${id}/add-operation`, operation);
     }
 }

@@ -12,9 +12,10 @@ import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
-    declarations: [ToastComponent, EditorComponent],
+    declarations: [ToastComponent, EditorComponent, TimelineComponent],
     imports: [
         ButtonModule,
         RippleModule,
@@ -29,7 +30,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
         InputTextModule,
         AngularEditorModule,
     ],
-    exports: [ToastComponent, EditorComponent],
+    exports: [ToastComponent, EditorComponent,TimelineComponent],
     providers: [],
 })
 export class SharedModule {}

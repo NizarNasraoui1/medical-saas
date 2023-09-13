@@ -7,7 +7,7 @@ import { ViewTreatmentPlanComponent } from './components/view-treatment-plan/vie
 const routes: Routes = [
     { path: '', component: TreatmentPlanListComponent },
     { path: 'add', component: AddTreatmentPlanComponent },
-    { path: 'view', component: ViewTreatmentPlanComponent },
+    { path: 'view/:id', component: ViewTreatmentPlanComponent },
 ];
 
 @NgModule({

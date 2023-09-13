@@ -1,0 +1,83 @@
+<p-dialog header="" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw',height:'60vh'}" [maximizable]="true" [baseZIndex]="10000"
+[draggable]="false" [resizable]="false">
+
+
+
+<div class="grid">
+    <div class="col-12 md:col-12">
+        <div class="card p-fluid">
+            <h2>{{ addConctactFields.title }}</h2>
+            <form [formGroup]="operationForm">
+                <div class="p-formgrid grid">
+                    <div class="field col-4">
+                        <label htmlFor="name">{{
+                            addConctactFields.name
+                        }}</label>
+                        <input
+                            formControlName="name"
+                            pInputText
+                            id="name"
+                            type="text"
+                        />
+                    </div>
+
+                    <div class="field col-4">
+                        <label htmlFor="name">{{
+                            addConctactFields.state
+                        }}</label>
+                        <p-dropdown formControlName="state" [options]="states" optionLabel="label"></p-dropdown>
+                    </div>
+
+                    <div class="field col-4">
+                        <label htmlFor="date">{{
+                            addConctactFields.date
+                        }}</label>
+                        <p-calendar
+                            formControlName="date"
+                            [showIcon]="true"
+                            dateFormat="dd/mm/yy"
+                        ></p-calendar>
+                    </div>
+
+
+
+
+                </div>
+                <div class="p-formgrid grid">
+                    <div class="field col-4">
+                        <label htmlFor="name">{{
+                            addConctactFields.color
+                        }}</label>
+                        <p-dropdown formControlName="color" [options]="colors" optionLabel="label"></p-dropdown>
+                    </div>
+                    <div class="field col-4">
+                        <label htmlFor="description">{{
+                            addConctactFields.description
+                        }}</label>
+                        <input
+                            formControlName="description"
+                            pInputText
+                            id="description"
+                            type="text"
+                        />
+                    </div>
+                </div>
+            </form>
+            <div *ngIf="!isFormValid">
+                <p style="color: red">Vérifier les informations entrées!</p>
+            </div>
+
+            <div class="col-8 md:col-2">
+                <p-button
+                    (onClick)="onSubmit()"
+                    label="Enregistrer"
+                    type="submit"
+                ></p-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <ng-template pTemplate="footer"></ng-template>
+</p-dialog>

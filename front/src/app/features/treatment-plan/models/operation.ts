@@ -1,3 +1,4 @@
+import { OperationColor } from './operation-color';
 import { OperationStatusEnum } from './satatu-enum';
 
 export interface Operation {
@@ -5,5 +6,6 @@ export interface Operation {
     name: string;
     date: Date;
     desciption: string;
-    status: OperationStatusEnum;
+    state: string;
+    color: string
 }

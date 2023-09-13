@@ -37,7 +37,6 @@ export class TreatmentPlanListComponent implements OnInit {
                 this.name,
             )
             .subscribe((res) => {
-                console.log(res);
                 this.data = res.content;
             });
     }

@@ -12,12 +12,16 @@ import { ViewTreatmentPlanComponent } from './components/view-treatment-plan/vie
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CalendarModule } from 'primeng/calendar';
 import { PaginatorModule } from 'primeng/paginator';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AddOperationModalComponent } from './components/add-operation-modal/add-operation-modal.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     declarations: [
         TreatmentPlanListComponent,
         AddTreatmentPlanComponent,
         ViewTreatmentPlanComponent,
+        AddOperationModalComponent,
     ],
     imports: [
         CommonModule,
@@ -30,6 +34,8 @@ import { PaginatorModule } from 'primeng/paginator';
         AutoCompleteModule,
         CalendarModule,
         PaginatorModule,
+        SharedModule,
+        DialogModule
     ],
     providers: [DatePipe],
 })
