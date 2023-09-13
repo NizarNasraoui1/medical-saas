@@ -36,7 +36,7 @@ public class TreatmentPlanResource {
         return new ResponseEntity<>(treatmentPlanService.searchTreatmentPlanPage(pageNumber,pageSize,name),HttpStatus.OK);
     }
 
-    @PostMapping("/{Id}/add-operation")
+    @PostMapping("/{id}/add-operation")
     public ResponseEntity<TreatmentPlanDto> addOperationToTreatmentPlan(@PathVariable("id")Long id, @RequestBody OperationDto operationDto){
         return new ResponseEntity<>(treatmentPlanService.addOperationToTreatmentPlan(id,operationDto),HttpStatus.OK);
     }

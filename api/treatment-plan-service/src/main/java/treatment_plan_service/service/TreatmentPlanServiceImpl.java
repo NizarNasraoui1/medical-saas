@@ -71,6 +71,7 @@ public class TreatmentPlanServiceImpl implements TreatmentPlanService{
         TreatmentPlan treatmentPlan = treatmentPlanRepository.findById(id).orElseThrow(()-> new EntityNotFoundException());
         Operation operation = operationMapper.toBo(operationDto);
         treatmentPlan.getOperations().add(operation);
+        operation.setTreatmentPlan(treatmentPlan);
         treatmentPlanRepository.save(treatmentPlan);
         return treatmentPlanMapper.toDto(treatmentPlan);
     }

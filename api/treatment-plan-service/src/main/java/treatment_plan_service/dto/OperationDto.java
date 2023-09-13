@@ -1,5 +1,6 @@
 package treatment_plan_service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class OperationDto {
     private Long id;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
     private String desciption;
     private String name;
