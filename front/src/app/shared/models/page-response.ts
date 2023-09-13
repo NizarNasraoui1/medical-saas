@@ -4,4 +4,4 @@ export interface PageResponseDTO<T> {
     totalPages: number;
     page: number;
     size: number;
-  }
+}

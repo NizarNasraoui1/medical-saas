@@ -36,7 +36,11 @@ export class AddTreatmentPlanComponent implements OnInit {
 
     filteredPatients: any[];
 
-    constructor(private fb: FormBuilder, private treatmentPlanService:TreatmentPlanService,private datePipe: DatePipe) {}
+    constructor(
+        private fb: FormBuilder,
+        private treatmentPlanService: TreatmentPlanService,
+        private datePipe: DatePipe,
+    ) {}
 
     ngOnInit(): void {
         this.initTreatmentPlanForm();
@@ -47,8 +51,6 @@ export class AddTreatmentPlanComponent implements OnInit {
             { name: 'Albert', id: 3 },
             { name: 'Adam', id: 4 },
         ];
-
-
     }
 
     onSubmit() {
@@ -61,10 +63,14 @@ export class AddTreatmentPlanComponent implements OnInit {
 
     saveTreatmentPlan(treatmentPlan: any) {
         treatmentPlan.patientName = treatmentPlan.patientName.name;
-        treatmentPlan.date = this.datePipe.transform(treatmentPlan.date, 'dd/MM/yyyy');
+        treatmentPlan.date = this.datePipe.transform(
+            treatmentPlan.date,
+            'dd/MM/yyyy',
+        );
         console.log(treatmentPlan);
-        this.treatmentPlanService.saveTreatmentPlan(treatmentPlan).subscribe(()=>{});
-
+        this.treatmentPlanService
+            .saveTreatmentPlan(treatmentPlan)
+            .subscribe(() => {});
     }
 
     initTreatmentPlanForm() {

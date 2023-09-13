@@ -15,7 +15,7 @@ export class HttpUtilService {
                 params = params.append(param, requestParams[param]);
             }
         }
-        return this.http.get(url,{ params });
+        return this.http.get(url, { params });
     }
     post(url: string, body: any, requestParams?: any): Observable<any> {
         var params = new HttpParams();

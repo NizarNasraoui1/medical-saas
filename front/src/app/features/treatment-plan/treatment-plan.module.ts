@@ -29,8 +29,8 @@ import { PaginatorModule } from 'primeng/paginator';
         ReactiveFormsModule,
         AutoCompleteModule,
         CalendarModule,
-        PaginatorModule
+        PaginatorModule,
     ],
-    providers: [DatePipe]
+    providers: [DatePipe],
 })
 export class TreatmentPlanModule {}
