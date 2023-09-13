@@ -15,7 +15,7 @@ const green = '#5eb41f';
     styleUrls: ['./view-treatment-plan.component.scss'],
 })
 export class ViewTreatmentPlanComponent implements OnInit {
-    viewAddOperationModal= true;
+    viewAddOperationModal = true;
     id: string | null;
     data: any;
     timeline: any;
@@ -78,40 +78,40 @@ export class ViewTreatmentPlanComponent implements OnInit {
                 'some description here 1 Lorem ipsum , dolor sit amet consectetur adipisicing elit.',
         },
 
-                {
-                    "id": 254,
-                    "date": "10/02/2002",
-                    "description": "desciption 5",
-                    "label": "operation 3",
-                    "state": "CURRENT",
-                    "color": "#c21616"
-                }
-            ]
+        {
+            id: 254,
+            date: '10/02/2002',
+            description: 'desciption 5',
+            label: 'operation 3',
+            state: 'CURRENT',
+            color: '#c21616',
+        },
+    ];
 
-
-    constructor(private treatmentPlanService:TreatmentPlanService,private activatedRoute:ActivatedRoute) {}
+    constructor(
+        private treatmentPlanService: TreatmentPlanService,
+        private activatedRoute: ActivatedRoute,
+    ) {}
 
     ngOnInit(): void {
-        this.activatedRoute.paramMap.subscribe((res)=>{
-            this.id= res.get('id');
+        this.activatedRoute.paramMap.subscribe((res) => {
+            this.id = res.get('id');
             this.getTreatmentPlanById();
-        })
+        });
     }
 
-
-    getTreatmentPlanById(){
-        if(this.id){
-            this.treatmentPlanService.getTreatmentPlanById(this.id).subscribe((res)=>{
-                console.log(res)
-                this.data=res.operations;
-            })
+    getTreatmentPlanById() {
+        if (this.id) {
+            this.treatmentPlanService
+                .getTreatmentPlanById(this.id)
+                .subscribe((res) => {
+                    console.log(res);
+                    this.data = res.operations;
+                });
         }
     }
 
-    onSaveAndCloseModal(event:any){
-        this.viewAddOperationModal=false;
+    onSaveAndCloseModal(event: any) {
+        this.viewAddOperationModal = false;
     }
-
-
-
 }

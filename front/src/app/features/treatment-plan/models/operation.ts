@@ -7,5 +7,5 @@ export interface Operation {
     date: Date;
     desciption: string;
     state: string;
-    color: string
+    color: string;
 }

@@ -33,7 +33,13 @@ export class TreatmentPlanService {
         });
     }
 
-    addOperationToTreatmentPlan(id:number,operation:Operation): Observable<TreatmentPlan> {
-        return this.httpUtilService.post(`${TREATMENT_PLAN_URL}/${id}/add-operation`, operation);
+    addOperationToTreatmentPlan(
+        id: number,
+        operation: Operation,
+    ): Observable<TreatmentPlan> {
+        return this.httpUtilService.post(
+            `${TREATMENT_PLAN_URL}/${id}/add-operation`,
+            operation,
+        );
     }
 }

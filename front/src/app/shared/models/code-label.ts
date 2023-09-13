@@ -1,4 +1,4 @@
-export interface CodeLabel{
-    code:string,
-    label:string
+export interface CodeLabel {
+    code: string;
+    label: string;
 }

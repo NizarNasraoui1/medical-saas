@@ -7,12 +7,12 @@ const blue = '#0858ad';
 const green = '#5eb41f';
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss']
+    selector: 'app-timeline',
+    templateUrl: './timeline.component.html',
+    styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent implements OnInit, AfterViewInit {
-    @Input() data:any;
+    @Input() data: any;
     timeline: any;
     popup: any;
 

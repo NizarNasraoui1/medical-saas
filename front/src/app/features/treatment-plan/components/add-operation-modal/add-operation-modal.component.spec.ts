@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddOperationModalComponent } from './add-operation-modal.component';
 
 describe('AddOperationModalComponent', () => {
-  let component: AddOperationModalComponent;
-  let fixture: ComponentFixture<AddOperationModalComponent>;
+    let component: AddOperationModalComponent;
+    let fixture: ComponentFixture<AddOperationModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AddOperationModalComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [AddOperationModalComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(AddOperationModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(AddOperationModalComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

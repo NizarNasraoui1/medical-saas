@@ -1,5 +1,5 @@
 export enum OperationStatusEnum {
-    DONE = "done",
-    CURRENT = "current",
-    UNDONE = "undone"
+    DONE = 'done',
+    CURRENT = 'current',
+    UNDONE = 'undone',
 }

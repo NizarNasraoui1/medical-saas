@@ -35,7 +35,7 @@ import { DialogModule } from 'primeng/dialog';
         CalendarModule,
         PaginatorModule,
         SharedModule,
-        DialogModule
+        DialogModule,
     ],
     providers: [DatePipe],
 })

@@ -30,7 +30,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
         InputTextModule,
         AngularEditorModule,
     ],
-    exports: [ToastComponent, EditorComponent,TimelineComponent],
+    exports: [ToastComponent, EditorComponent, TimelineComponent],
     providers: [],
 })
 export class SharedModule {}

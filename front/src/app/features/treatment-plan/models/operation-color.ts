@@ -1,3 +1,5 @@
 export enum OperationColor {
-    DONE,CURRENT,UNDONE
+    DONE,
+    CURRENT,
+    UNDONE,
 }

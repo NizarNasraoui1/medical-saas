@@ -1,5 +1,7 @@
 <app-timeline *ngIf="data" [data]="data"></app-timeline>
 
-
-<app-add-operation-modal *ngIf="viewAddOperationModal" [id]="id" (saveAndClose)="onSaveAndCloseModal($event)"></app-add-operation-modal>
-
+<app-add-operation-modal
+    *ngIf="viewAddOperationModal"
+    [id]="id"
+    (saveAndClose)="onSaveAndCloseModal($event)"
+></app-add-operation-modal>
