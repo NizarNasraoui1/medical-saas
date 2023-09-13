@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreatmentPlanService } from '../../services/treatment-plan.service';
 import { TreatmentPlan } from '../../models/treatment-plan';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-treatment-plan-list',
@@ -23,7 +24,7 @@ export class TreatmentPlanListComponent implements OnInit {
 
     data!: TreatmentPlan[];
 
-    constructor(private treatmentPlanService: TreatmentPlanService) {}
+    constructor(private treatmentPlanService: TreatmentPlanService,private router:Router) {}
 
     ngOnInit() {
         this.searchTreatmentPlanPage();
@@ -47,5 +48,9 @@ export class TreatmentPlanListComponent implements OnInit {
         this.paginationSetting.pageCount = changes.pageCount;
         this.paginationSetting.rows = changes.rows;
         this.searchTreatmentPlanPage();
+    }
+
+    navigateToView(id:number){
+        this.router.navigate(['treatment-plan/view/',id]);
     }
 }

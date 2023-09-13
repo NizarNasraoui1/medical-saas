@@ -23,7 +23,7 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-e>
-            <tr>
+            <tr (click)="navigateToView(e.id)">
                 <td>{{ e.name }}</td>
                 <td>{{ e.patientName }}</td>
                 <td>{{ e.date }}</td>
