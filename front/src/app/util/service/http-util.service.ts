@@ -3,38 +3,41 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class HttpUtilService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-    get(url:string,requestParams?:any):Observable<any>{
-        return this.http.get(url,requestParams);
-
-    }
-    post(url:string,body:any,requestParams?:any):Observable<any>{
-        var params=new HttpParams();
-        if(requestParams){
-            for(let param of Object.keys(requestParams)){
-                params=params.append(param,requestParams[param]);
+    get(url: string, requestParams?: any): Observable<any> {
+        var params = new HttpParams();
+        if (requestParams) {
+            for (let param of Object.keys(requestParams)) {
+                params = params.append(param, requestParams[param]);
             }
         }
-        return this.http.post(url,body,{params});
+        return this.http.get(url,{ params });
     }
-
-    put(url:string,body:any,id?:number):Observable<any>{
-        if(id){
-            return this.http.put(`${url}/${id}`,body);
+    post(url: string, body: any, requestParams?: any): Observable<any> {
+        var params = new HttpParams();
+        if (requestParams) {
+            for (let param of Object.keys(requestParams)) {
+                params = params.append(param, requestParams[param]);
+            }
         }
-        return this.http.put(url,body);
+        return this.http.post(url, body, { params });
     }
 
-    delete(url:string,id?:number):Observable<any>{
-        if(id){
+    put(url: string, body: any, id?: number): Observable<any> {
+        if (id) {
+            return this.http.put(`${url}/${id}`, body);
+        }
+        return this.http.put(url, body);
+    }
+
+    delete(url: string, id?: number): Observable<any> {
+        if (id) {
             return this.http.delete(`${url}/${id}`);
         }
         return this.http.delete(url);
     }
-
 }

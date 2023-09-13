@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import treatment_plan_service.enumeration.OperationStatus;
+import treatment_plan_service.enumeration.OperationStatusEnum;
 
 import java.time.LocalDate;
 
@@ -21,7 +21,7 @@ public class Operation {
     private LocalDate date;
     private String desciption;
     private String name;
-    private OperationStatus status;
+    private OperationStatusEnum status;
     @ManyToOne
     @JoinColumn(name="treatment_plan_id",referencedColumnName = "id")
     private TreatmentPlan treatmentPlan;

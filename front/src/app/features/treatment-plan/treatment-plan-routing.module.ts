@@ -5,13 +5,13 @@ import { AddTreatmentPlanComponent } from './components/add-treatment-plan/add-t
 import { ViewTreatmentPlanComponent } from './components/view-treatment-plan/view-treatment-plan.component';
 
 const routes: Routes = [
-    { path: '', component: TreatmentPlanListComponent},
-    {path: 'add',component: AddTreatmentPlanComponent},
-    {path: 'view',component: ViewTreatmentPlanComponent}
+    { path: '', component: TreatmentPlanListComponent },
+    { path: 'add', component: AddTreatmentPlanComponent },
+    { path: 'view', component: ViewTreatmentPlanComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class TreatmentPlanRoutingModule { }
+export class TreatmentPlanRoutingModule {}

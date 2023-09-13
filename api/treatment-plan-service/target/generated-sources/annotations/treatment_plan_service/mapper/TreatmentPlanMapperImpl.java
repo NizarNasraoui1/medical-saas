@@ -11,7 +11,7 @@ import treatment_plan_service.entity.TreatmentPlan;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-13T01:04:33+0200",
+    date = "2023-09-13T15:57:32+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
 )
 @Component

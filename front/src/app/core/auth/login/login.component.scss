@@ -18,10 +18,14 @@
 .loginWrapper {
     border-radius: 56px;
     padding: 0.3rem;
-    background: linear-gradient(-35deg, #0079ff, white, white , white, #0399f2);
+    background: linear-gradient(-35deg, #0079ff, white, white, white, #0399f2);
 
     .loginContent {
         border-radius: 53px;
-        background: linear-gradient(180deg, var(--surface-50) 38.9%, var(--surface-0));
+        background: linear-gradient(
+            180deg,
+            var(--surface-50) 38.9%,
+            var(--surface-0)
+        );
     }
 }

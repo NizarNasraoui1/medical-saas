@@ -21,9 +21,9 @@ import { DashboardService } from './service/dashboard.service';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        DashboardsRoutingModule
+        DashboardsRoutingModule,
     ],
     declarations: [DashboardComponent],
-    providers: [DashboardService]
+    providers: [DashboardService],
 })
-export class DashboardModule { }
+export class DashboardModule {}

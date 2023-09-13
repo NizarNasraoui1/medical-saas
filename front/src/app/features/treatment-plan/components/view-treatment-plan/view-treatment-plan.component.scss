@@ -7,7 +7,6 @@
 }
 
 :host ::ng-deep {
-
     .event {
         width: 42px;
         height: 28px;
@@ -19,7 +18,7 @@
     }
 
     .event-current::after {
-        content: ' ';
+        content: " ";
         height: 60px;
         width: 10px;
         background-color: rgb(255, 255, 255, 0.6);
@@ -120,7 +119,7 @@
     }
 
     #popup .popup-header::after {
-        content: ' ';
+        content: " ";
         width: 10px;
         height: 10px;
         background: var(--status-color);
@@ -140,7 +139,7 @@
     }
 
     #popup .popup-label::after {
-        content: ' ';
+        content: " ";
         position: absolute;
         width: calc(100% - 10px);
         bottom: -3px;
@@ -168,7 +167,7 @@
     }
 
     #popup::after {
-        content: ' ';
+        content: " ";
         border: 10px solid transparent;
         border-bottom: 10px solid var(--key-color);
         width: 0;

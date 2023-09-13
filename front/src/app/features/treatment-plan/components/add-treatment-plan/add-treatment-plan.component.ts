@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
-
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
+import { TreatmentPlanService } from '../../services/treatment-plan.service';
+import { DatePipe } from '@angular/common';
 
 interface AutoCompleteCompleteEvent {
     originalEvent: Event;
@@ -9,82 +14,79 @@ interface AutoCompleteCompleteEvent {
 }
 
 @Component({
-  selector: 'app-add-treatment-plan',
-  templateUrl: './add-treatment-plan.component.html',
-  styleUrls: ['./add-treatment-plan.component.scss']
+    selector: 'app-add-treatment-plan',
+    templateUrl: './add-treatment-plan.component.html',
+    styleUrls: ['./add-treatment-plan.component.scss'],
 })
 export class AddTreatmentPlanComponent implements OnInit {
-    contactForm: FormGroup;
+    treatmentPlanForm: FormGroup;
     date: Date | undefined;
     isFormValid: boolean = true;
     addConctactFields = {
-        title:'Add treatment Plan',
-        name:'Nom',
-        patientName:'Nom du Patient',
-        description:'Description',
-        date:'Date'
+        title: "Création d'un plan de traitement",
+        name: 'Nom',
+        patientName: 'Nom du Patient',
+        description: 'Description',
+        date: 'Date',
     };
 
-    countries: any[] | undefined;
+    patients: any[] | undefined;
 
     formGroup: FormGroup | undefined;
 
     filteredPatients: any[];
 
-
-    constructor(private fb:FormBuilder) {
-
-    }
+    constructor(private fb: FormBuilder, private treatmentPlanService:TreatmentPlanService,private datePipe: DatePipe) {}
 
     ngOnInit(): void {
-        this.initContactForm();
+        this.initTreatmentPlanForm();
 
-        this.countries =  [
-            { name: 'Nicolas', code: 'AF' },
-            { name: 'Naom', code: 'AL' },
-            { name: 'Albert', code: 'DZ' },
-            { name: 'Adam', code: 'AS' }
+        this.patients = [
+            { name: 'Nicolas', id: 1 },
+            { name: 'Naom', id: 2 },
+            { name: 'Albert', id: 3 },
+            { name: 'Adam', id: 4 },
         ];
 
-    this.formGroup = new FormGroup({
-        selectedCountry: new FormControl<object | null>(null)
-    });
+
     }
 
     onSubmit() {
-        this.isFormValid = this.contactForm.valid;
-        if (this.isFormValid){
-            this.saveUser(this.contactForm.value);
-        }
+        // this.isFormValid = this.treatmentPlanForm.valid;
+        // if (this.isFormValid) {
+        //     this.saveTreatmentPlan(this.treatmentPlanForm.value);
+        // }
+        this.saveTreatmentPlan(this.treatmentPlanForm.value);
     }
 
-    saveUser(contact:any){
+    saveTreatmentPlan(treatmentPlan: any) {
+        treatmentPlan.patientName = treatmentPlan.patientName.name;
+        treatmentPlan.date = this.datePipe.transform(treatmentPlan.date, 'dd/MM/yyyy');
+        console.log(treatmentPlan);
+        this.treatmentPlanService.saveTreatmentPlan(treatmentPlan).subscribe(()=>{});
 
     }
 
-    initContactForm(){
-        this.contactForm = this.fb.group({
+    initTreatmentPlanForm() {
+        this.treatmentPlanForm = this.fb.group({
             name: ['', [Validators.required, Validators.minLength(1)]],
             patientName: ['', [Validators.required, Validators.minLength(1)]],
             description: [''],
-            date: [null],
-
+            date: [new Date()],
         });
-
     }
 
     filter(event: AutoCompleteCompleteEvent) {
         let filtered: any[] = [];
         let query = event.query;
 
-        for (let i = 0; i < (this.countries as any[]).length; i++) {
-            let country = (this.countries as any[])[i];
-            if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-                filtered.push(country);
+        for (let i = 0; i < (this.patients as any[]).length; i++) {
+            let patient = (this.patients as any[])[i];
+            if (patient.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(patient);
             }
         }
 
         this.filteredPatients = filtered;
     }
-
 }

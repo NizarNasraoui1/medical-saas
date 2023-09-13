@@ -1,5 +1,5 @@
 package treatment_plan_service.enumeration;
 
-public enum OperationStatus {
+public enum OperationStatusEnum {
     DONE,CURRENT,UNDONE
 }
