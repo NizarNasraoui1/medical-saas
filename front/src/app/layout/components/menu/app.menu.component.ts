@@ -4,34 +4,45 @@ import { LayoutService } from '../../service/app.layout.service';
 
 @Component({
     selector: 'app-menu',
-    templateUrl: './app.menu.component.html'
+    templateUrl: './app.menu.component.html',
 })
 export class AppMenuComponent implements OnInit {
-
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService) {}
 
     ngOnInit() {
         this.model = [
             {
                 label: 'Home',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
-                ]
+                    {
+                        label: 'Dashboard',
+                        icon: 'pi pi-fw pi-home',
+                        routerLink: ['/'],
+                    },
+                ],
             },
             {
-                label: 'Contact',
+                label: 'Fiches Patients',
                 items: [
-                    { label: 'Contact', icon: 'pi pi-fw pi-id-card', routerLink: ['/contact'] },
-                ]
+                    {
+                        label: 'Fiches Patients',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/contact'],
+                    },
+                ],
             },
             {
-                label: 'Opportunity',
+                label: 'Plan de traitement',
                 items: [
-                    { label: 'Opportunity', icon: 'pi pi-fw pi-users', routerLink: ['/treatment-plan'] },
-                ]
-            }
+                    {
+                        label: 'Plan de traitement',
+                        icon: 'pi pi-fw pi-calendar-minus',
+                        routerLink: ['/treatment-plan'],
+                    },
+                ],
+            },
             // {
             //     label: 'Hierarchy',
             //     items: [

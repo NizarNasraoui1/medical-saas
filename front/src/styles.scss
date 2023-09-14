@@ -14,5 +14,27 @@ $gutter: 1rem; //for primeflex grid system
 /* Demos */
 @import "assets/demo/styles/flags/flags.css";
 @import "assets/demo/styles/badges.scss";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.relative{
+    position: relative;
+}
+.embedded-modal{
+    padding: 0 !important;
+}
+.embedded-modal-header{
+    padding: 2rem;
+    border-bottom: 1px solid #ced4da;
+    h2{
+        margin: 0;
+    }
+}
+.embedded-modal-body{
+    padding: 2rem;
+}

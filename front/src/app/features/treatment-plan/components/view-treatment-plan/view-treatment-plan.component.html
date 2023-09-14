@@ -1,56 +1,7 @@
-<h1>Plan</h1>
+<app-timeline *ngIf="data" [data]="data"></app-timeline>
 
-<div class="timeline" id="timeline"></div>
-<div id="popup"></div>
-
-<table>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-    <tr>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi voluptatibus eos et, error necessitatibus qui tempore aperiam nihil officiis sed, a culpa suscipit, quia id. Dicta eos consequuntur dolorum voluptate!</td>
-    </tr>
-</table>
+<app-add-operation-modal
+    *ngIf="viewAddOperationModal"
+    [id]="id"
+    (saveAndClose)="onSaveAndCloseModal($event)"
+></app-add-operation-modal>

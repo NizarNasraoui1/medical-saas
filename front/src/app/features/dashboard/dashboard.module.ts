@@ -10,6 +10,8 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './service/dashboard.service';
+import { PaginatorModule } from 'primeng/paginator';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
     imports: [
@@ -21,9 +23,11 @@ import { DashboardService } from './service/dashboard.service';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        DashboardsRoutingModule
+        DashboardsRoutingModule,
+        PaginatorModule,
+        InputTextModule,
     ],
-    declarations: [DashboardComponent],
-    providers: [DashboardService]
+    declarations: [DashboardComponent,],
+    providers: [DashboardService],
 })
-export class DashboardModule { }
+export class DashboardModule {}

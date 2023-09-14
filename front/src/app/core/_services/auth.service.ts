@@ -7,41 +7,47 @@ import { TokenStorageService } from './token-storage.service';
 const AUTH_API = 'http://localhost:8080';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthService {
+    constructor(
+        private http: HttpClient,
+        private tokenStorageService: TokenStorageService,
+    ) {}
 
-  constructor(private http: HttpClient,private tokenStorageService:TokenStorageService) { }
+    login(loginForm: LoginForm): Observable<any> {
+        let body = new URLSearchParams();
+        body.set('username', loginForm.username);
+        body.set('password', loginForm.password);
 
-  login(loginForm:LoginForm): Observable<any> {
+        return this.http.post('auth/token', loginForm, {
+            responseType: 'text',
+        });
+    }
 
-    let body = new URLSearchParams();
-    body.set('username', loginForm.username);
-    body.set('password', loginForm.password);
+    logOut() {
+        this.tokenStorageService.signOut();
+    }
 
-    return this.http
-        .post('auth/token', loginForm,{responseType: 'text'});
-  }
+    register(user: any): Observable<any> {
+        return this.http.post(
+            AUTH_API + 'signup',
+            {
+                username: user.username,
+                email: user.email,
+                password: user.password,
+            },
+            httpOptions,
+        );
+    }
 
-  logOut(){
-    this.tokenStorageService.signOut();
-  }
-
-  register(user:any): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
-      username: user.username,
-      email: user.email,
-      password: user.password
-    }, httpOptions);
-  }
-
-  isAuthenticated():boolean{
-    const token=this.tokenStorageService.getToken();
-    if(!token) return false;
-    return true;
-  }
+    isAuthenticated(): boolean {
+        const token = this.tokenStorageService.getToken();
+        if (!token) return false;
+        return true;
+    }
 }

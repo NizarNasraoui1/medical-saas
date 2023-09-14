@@ -1,0 +1,51 @@
+<div class="grid">
+    <div *ngFor="let dashboardCard of DashboardCards; let idx=index" class="col-4">
+        <div class="dashboard-card" [style.--key-color]="getCardColorLoop(idx)">
+            <h3>{{dashboardCard.label}}</h3>
+            <h2>{{dashboardCard.value}}</h2>
+        </div>
+    </div>
+    <div style="padding: 1rem; min-height:110px" class="col-4 jalon-button-wrapper">
+        <button><i class="pi pi-plus"></i>
+            <span>Ajouter un jalon favoris</span></button>
+    </div>
+</div>
+
+<div class="grid justify-content-end align-items-end">
+    <div style="padding: 1rem;" class="col-4 newP-button-wrapper">
+        <button class="p-ripple p-element p-button">
+            <div style="flex: 1 1 auto;"><i class="pi pi-pencil"></i><span>Nouvelle fiche
+                    patient</span></div>
+        </button>
+    </div>
+</div>
+
+<p-table [value]="data">
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left p-input-wrapper">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Recherche" [(ngModel)]="name"
+                    (ngModelChange)="searchTreatmentPlanPage()" />
+            </span>
+            <button class="filterBtn">filtrer</button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let e of fields.arrayFields" style="width: 25%">
+                {{ e }}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-e>
+        <tr (click)="navigateToView(e.id)">
+            <td>{{ e.name }}</td>
+            <td>{{ e.patientName }}</td>
+            <td>{{ e.date }}</td>
+            <td>{{ e.description }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-paginator (onPageChange)="onPageChange($event)" [first]="paginationSetting.first" [rows]="paginationSetting.rows"
+    [totalRecords]="120" [rowsPerPageOptions]="[5, 10, 20, 30]"></p-paginator>
