@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import treatment_plan_service.dto.AppointmentDTO;
 
 @RestController
 @AllArgsConstructor
-public abstract class GenericResource<B, D, I, R extends GenericRepository<B, I>, M extends GenericMapper<B, D>,S extends GenericService<B, D, I, R,M>> {
+public abstract class GenericResource<B, D, I, R extends GenericRepository<B, I>, M extends GenericMapper<B, D>, S extends GenericService<B, D, I, R, M>> {
     final S service;
 
 
