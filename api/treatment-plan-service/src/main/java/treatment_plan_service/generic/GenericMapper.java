@@ -1,4 +1,4 @@
-package treatment_plan_service.mapper;
+package treatment_plan_service.generic;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.MappingTarget;

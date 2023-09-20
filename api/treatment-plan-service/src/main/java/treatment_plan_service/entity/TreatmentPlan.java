@@ -24,5 +24,5 @@ public class TreatmentPlan {
     private String description;
     private LocalDate date;
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "treatmentPlan")
-    private List<Operation> operations = new ArrayList<>();
+    private List<Appointment> appointments = new ArrayList<>();
 }
