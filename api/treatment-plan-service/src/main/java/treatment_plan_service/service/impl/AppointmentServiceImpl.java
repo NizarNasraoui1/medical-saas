@@ -30,17 +30,23 @@ public class AppointmentServiceImpl extends GenericServiceImpl<Appointment, Appo
 
     @Override
     public Mono<AppointmentDTO> addTreatmentToAppointment(AddTreatmentToAppointmentDTO addTreatmentToAppointmentDTO) {
-        Treatment treatment = treatmentRepository.findById(addTreatmentToAppointmentDTO.getTreatmentId()).orElseThrow(()->new EntityNotFoundException());
-        Appointment appointment = repository.findById(addTreatmentToAppointmentDTO.getAppointmentId()).orElseThrow(()->new EntityNotFoundException());
-        AppointmentTreatment appointmentTreatment = new AppointmentTreatment();
-        appointmentTreatment.setAppointment(appointment);
-        appointmentTreatment.setTreatment(treatment);
-        appointmentTreatment.setId(new AppointmentTreatmentKey(addTreatmentToAppointmentDTO.getAppointmentId(),addTreatmentToAppointmentDTO.getAppointmentId()));
+        return Mono.zip(
+                Mono.justOrEmpty(treatmentRepository.findById(addTreatmentToAppointmentDTO.getTreatmentId())
+                        .orElseThrow(() -> new EntityNotFoundException())),
 
-        appointmentTreatmentRepository.save(appointmentTreatment);
-//        repository.save(appointment);
-//        treatmentRepository.save(treatment);
+                Mono.justOrEmpty(repository.findById(addTreatmentToAppointmentDTO.getAppointmentId())
+                        .orElseThrow(() -> new EntityNotFoundException()))
+        ).flatMap(tuple -> {
+            Treatment treatment = tuple.getT1();
+            Appointment appointment = tuple.getT2();
 
-        return Mono.justOrEmpty(mapper.toDto(appointment));
+            AppointmentTreatment appointmentTreatment = new AppointmentTreatment();
+            appointmentTreatment.setAppointment(appointment);
+            appointmentTreatment.setTreatment(treatment);
+            appointmentTreatment.setId(new AppointmentTreatmentKey(addTreatmentToAppointmentDTO.getAppointmentId(), addTreatmentToAppointmentDTO.getAppointmentId()));
+
+            return Mono.fromRunnable(() -> appointmentTreatmentRepository.save(appointmentTreatment))
+                    .then(Mono.fromCallable(() -> mapper.toDto(appointment)));
+        });
     }
 }
