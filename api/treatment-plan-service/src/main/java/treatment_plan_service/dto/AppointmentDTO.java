@@ -15,7 +15,6 @@ public class AppointmentDTO {
     private Long id;
     private String name;
     private AppointmentStatusEnum status = AppointmentStatusEnum.UNDONE;
-    private TreatmentPlanDTO treatmentPlan;
     private List<TreatmentDTO> treatments;
 
 //    @JsonFormat(pattern = "dd/MM/yyyy")

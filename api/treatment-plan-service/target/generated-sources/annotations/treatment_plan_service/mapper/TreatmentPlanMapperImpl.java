@@ -15,7 +15,7 @@ import treatment_plan_service.entity.TreatmentPlan;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-21T22:07:14+0200",
+    date = "2023-09-21T22:26:24+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
 )
 @Component
@@ -180,7 +180,6 @@ public class TreatmentPlanMapperImpl implements TreatmentPlanMapper {
         appointmentDTO.setId( appointment.getId() );
         appointmentDTO.setName( appointment.getName() );
         appointmentDTO.setStatus( appointment.getStatus() );
-        appointmentDTO.setTreatmentPlan( toDto( appointment.getTreatmentPlan() ) );
         appointmentDTO.setTreatments( treatmentListToTreatmentDTOList( appointment.getTreatments() ) );
 
         return appointmentDTO;
@@ -263,7 +262,6 @@ public class TreatmentPlanMapperImpl implements TreatmentPlanMapper {
         appointment.setId( appointmentDTO.getId() );
         appointment.setName( appointmentDTO.getName() );
         appointment.setStatus( appointmentDTO.getStatus() );
-        appointment.setTreatmentPlan( toBo( appointmentDTO.getTreatmentPlan() ) );
         appointment.setTreatments( treatmentDTOListToTreatmentList( appointmentDTO.getTreatments() ) );
 
         return appointment;

@@ -21,7 +21,7 @@ public class AppointmentResource extends GenericResource<Appointment,Appointment
         super(appointmentService);
     }
 
-    @PostMapping("/add-treatment")
+    @PostMapping("/treatment")
     public Mono<AppointmentDTO> addTreatment(@RequestBody AddTreatmentToAppointmentDTO addTreatmentToAppointmentDTO){
         return service.addTreatmentToAppointment(addTreatmentToAppointmentDTO);
     }

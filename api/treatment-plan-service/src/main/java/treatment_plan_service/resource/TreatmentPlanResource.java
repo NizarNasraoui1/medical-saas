@@ -1,8 +1,9 @@
 package treatment_plan_service.resource;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
+import treatment_plan_service.dto.AppointmentDTO;
 import treatment_plan_service.dto.TreatmentPlanDTO;
 import treatment_plan_service.entity.TreatmentPlan;
 import treatment_plan_service.generic.GenericResource;
@@ -16,5 +17,10 @@ public class TreatmentPlanResource extends GenericResource<TreatmentPlan, Treatm
 
     public TreatmentPlanResource(TreatmentPlanService service) {
         super(service);
+    }
+
+    @PostMapping("/{id}/appointments")
+    public Mono<TreatmentPlanDTO> addAppointment(@PathVariable("id")Long id,@RequestBody AppointmentDTO appointmentDTO){
+        return service.addAppointment(id,appointmentDTO);
     }
 }
