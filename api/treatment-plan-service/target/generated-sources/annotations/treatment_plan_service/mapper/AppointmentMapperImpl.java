@@ -5,11 +5,17 @@ import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 import treatment_plan_service.dto.AppointmentDTO;
+import treatment_plan_service.dto.MilestoneDTO;
+import treatment_plan_service.dto.TreatmentDTO;
+import treatment_plan_service.dto.TreatmentPlanDTO;
 import treatment_plan_service.entity.Appointment;
+import treatment_plan_service.entity.Milestone;
+import treatment_plan_service.entity.Treatment;
+import treatment_plan_service.entity.TreatmentPlan;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T22:27:26+0200",
+    date = "2023-09-21T19:03:26+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
 )
 @Component
@@ -54,6 +60,8 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         appointmentDTO.setId( bo.getId() );
         appointmentDTO.setName( bo.getName() );
         appointmentDTO.setStatus( bo.getStatus() );
+        appointmentDTO.setTreatmentPlan( treatmentPlanToTreatmentPlanDTO( bo.getTreatmentPlan() ) );
+        appointmentDTO.setTreatments( treatmentListToTreatmentDTOList( bo.getTreatments() ) );
 
         return appointmentDTO;
     }
@@ -69,6 +77,8 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         appointment.setId( dto.getId() );
         appointment.setName( dto.getName() );
         appointment.setStatus( dto.getStatus() );
+        appointment.setTreatmentPlan( treatmentPlanDTOToTreatmentPlan( dto.getTreatmentPlan() ) );
+        appointment.setTreatments( treatmentDTOListToTreatmentList( dto.getTreatments() ) );
 
         return appointment;
     }
@@ -82,7 +92,202 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         bo.setId( dto.getId() );
         bo.setName( dto.getName() );
         bo.setStatus( dto.getStatus() );
+        if ( dto.getTreatmentPlan() != null ) {
+            if ( bo.getTreatmentPlan() == null ) {
+                bo.setTreatmentPlan( new TreatmentPlan() );
+            }
+            treatmentPlanDTOToTreatmentPlan1( dto.getTreatmentPlan(), bo.getTreatmentPlan() );
+        }
+        else {
+            bo.setTreatmentPlan( null );
+        }
+        if ( bo.getTreatments() != null ) {
+            List<Treatment> list = treatmentDTOListToTreatmentList( dto.getTreatments() );
+            if ( list != null ) {
+                bo.getTreatments().clear();
+                bo.getTreatments().addAll( list );
+            }
+            else {
+                bo.setTreatments( null );
+            }
+        }
+        else {
+            List<Treatment> list = treatmentDTOListToTreatmentList( dto.getTreatments() );
+            if ( list != null ) {
+                bo.setTreatments( list );
+            }
+        }
 
         return bo;
+    }
+
+    protected TreatmentPlanDTO treatmentPlanToTreatmentPlanDTO(TreatmentPlan treatmentPlan) {
+        if ( treatmentPlan == null ) {
+            return null;
+        }
+
+        TreatmentPlanDTO treatmentPlanDTO = new TreatmentPlanDTO();
+
+        treatmentPlanDTO.setId( treatmentPlan.getId() );
+        treatmentPlanDTO.setName( treatmentPlan.getName() );
+        treatmentPlanDTO.setPatientName( treatmentPlan.getPatientName() );
+        treatmentPlanDTO.setDescription( treatmentPlan.getDescription() );
+        treatmentPlanDTO.setDate( treatmentPlan.getDate() );
+        treatmentPlanDTO.setAppointments( toDtos( treatmentPlan.getAppointments() ) );
+
+        return treatmentPlanDTO;
+    }
+
+    protected MilestoneDTO milestoneToMilestoneDTO(Milestone milestone) {
+        if ( milestone == null ) {
+            return null;
+        }
+
+        MilestoneDTO milestoneDTO = new MilestoneDTO();
+
+        milestoneDTO.setId( milestone.getId() );
+        milestoneDTO.setName( milestone.getName() );
+        milestoneDTO.setTreatment( treatmentToTreatmentDTO( milestone.getTreatment() ) );
+
+        return milestoneDTO;
+    }
+
+    protected List<MilestoneDTO> milestoneListToMilestoneDTOList(List<Milestone> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<MilestoneDTO> list1 = new ArrayList<MilestoneDTO>( list.size() );
+        for ( Milestone milestone : list ) {
+            list1.add( milestoneToMilestoneDTO( milestone ) );
+        }
+
+        return list1;
+    }
+
+    protected TreatmentDTO treatmentToTreatmentDTO(Treatment treatment) {
+        if ( treatment == null ) {
+            return null;
+        }
+
+        TreatmentDTO treatmentDTO = new TreatmentDTO();
+
+        treatmentDTO.setId( treatment.getId() );
+        treatmentDTO.setName( treatment.getName() );
+        treatmentDTO.setMilestones( milestoneListToMilestoneDTOList( treatment.getMilestones() ) );
+
+        return treatmentDTO;
+    }
+
+    protected List<TreatmentDTO> treatmentListToTreatmentDTOList(List<Treatment> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<TreatmentDTO> list1 = new ArrayList<TreatmentDTO>( list.size() );
+        for ( Treatment treatment : list ) {
+            list1.add( treatmentToTreatmentDTO( treatment ) );
+        }
+
+        return list1;
+    }
+
+    protected TreatmentPlan treatmentPlanDTOToTreatmentPlan(TreatmentPlanDTO treatmentPlanDTO) {
+        if ( treatmentPlanDTO == null ) {
+            return null;
+        }
+
+        TreatmentPlan treatmentPlan = new TreatmentPlan();
+
+        treatmentPlan.setId( treatmentPlanDTO.getId() );
+        treatmentPlan.setName( treatmentPlanDTO.getName() );
+        treatmentPlan.setPatientName( treatmentPlanDTO.getPatientName() );
+        treatmentPlan.setDescription( treatmentPlanDTO.getDescription() );
+        treatmentPlan.setDate( treatmentPlanDTO.getDate() );
+        treatmentPlan.setAppointments( toBos( treatmentPlanDTO.getAppointments() ) );
+
+        return treatmentPlan;
+    }
+
+    protected Milestone milestoneDTOToMilestone(MilestoneDTO milestoneDTO) {
+        if ( milestoneDTO == null ) {
+            return null;
+        }
+
+        Milestone milestone = new Milestone();
+
+        milestone.setId( milestoneDTO.getId() );
+        milestone.setName( milestoneDTO.getName() );
+        milestone.setTreatment( treatmentDTOToTreatment( milestoneDTO.getTreatment() ) );
+
+        return milestone;
+    }
+
+    protected List<Milestone> milestoneDTOListToMilestoneList(List<MilestoneDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Milestone> list1 = new ArrayList<Milestone>( list.size() );
+        for ( MilestoneDTO milestoneDTO : list ) {
+            list1.add( milestoneDTOToMilestone( milestoneDTO ) );
+        }
+
+        return list1;
+    }
+
+    protected Treatment treatmentDTOToTreatment(TreatmentDTO treatmentDTO) {
+        if ( treatmentDTO == null ) {
+            return null;
+        }
+
+        Treatment treatment = new Treatment();
+
+        treatment.setId( treatmentDTO.getId() );
+        treatment.setName( treatmentDTO.getName() );
+        treatment.setMilestones( milestoneDTOListToMilestoneList( treatmentDTO.getMilestones() ) );
+
+        return treatment;
+    }
+
+    protected List<Treatment> treatmentDTOListToTreatmentList(List<TreatmentDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Treatment> list1 = new ArrayList<Treatment>( list.size() );
+        for ( TreatmentDTO treatmentDTO : list ) {
+            list1.add( treatmentDTOToTreatment( treatmentDTO ) );
+        }
+
+        return list1;
+    }
+
+    protected void treatmentPlanDTOToTreatmentPlan1(TreatmentPlanDTO treatmentPlanDTO, TreatmentPlan mappingTarget) {
+        if ( treatmentPlanDTO == null ) {
+            return;
+        }
+
+        mappingTarget.setId( treatmentPlanDTO.getId() );
+        mappingTarget.setName( treatmentPlanDTO.getName() );
+        mappingTarget.setPatientName( treatmentPlanDTO.getPatientName() );
+        mappingTarget.setDescription( treatmentPlanDTO.getDescription() );
+        mappingTarget.setDate( treatmentPlanDTO.getDate() );
+        if ( mappingTarget.getAppointments() != null ) {
+            List<Appointment> list = toBos( treatmentPlanDTO.getAppointments() );
+            if ( list != null ) {
+                mappingTarget.getAppointments().clear();
+                mappingTarget.getAppointments().addAll( list );
+            }
+            else {
+                mappingTarget.setAppointments( null );
+            }
+        }
+        else {
+            List<Appointment> list = toBos( treatmentPlanDTO.getAppointments() );
+            if ( list != null ) {
+                mappingTarget.setAppointments( list );
+            }
+        }
     }
 }

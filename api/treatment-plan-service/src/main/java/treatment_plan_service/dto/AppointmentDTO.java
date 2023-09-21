@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import treatment_plan_service.entity.AppointmentTreatment;
-import treatment_plan_service.entity.TreatmentPlan;
 import treatment_plan_service.enumeration.AppointmentStatusEnum;
-
 import java.util.List;
 
 @Getter
@@ -17,7 +14,9 @@ import java.util.List;
 public class AppointmentDTO {
     private Long id;
     private String name;
-    private AppointmentStatusEnum status;
+    private AppointmentStatusEnum status = AppointmentStatusEnum.UNDONE;
+    private TreatmentPlanDTO treatmentPlan;
+    private List<TreatmentDTO> treatments;
 
 //    @JsonFormat(pattern = "dd/MM/yyyy")
 //    private LocalDate date;

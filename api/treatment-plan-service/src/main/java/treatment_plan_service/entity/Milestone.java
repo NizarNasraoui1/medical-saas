@@ -16,6 +16,8 @@ public class Milestone {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "treatment_id",referencedColumnName = "id")
     private Treatment treatment;

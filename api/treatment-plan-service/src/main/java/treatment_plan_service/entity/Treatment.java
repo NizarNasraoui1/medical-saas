@@ -18,8 +18,10 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "treatment")
-    private List<AppointmentTreatment> appointments;
+    String name;
+
+    @ManyToMany(mappedBy = "treatments")
+    private List<Appointment> appointments;
 
     @OneToMany(mappedBy = "treatment",cascade = CascadeType.ALL)
     private List<Milestone> milestones;
