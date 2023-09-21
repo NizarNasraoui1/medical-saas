@@ -2,4 +2,5 @@
 /identity-service/target
 /registry-service/target
 /starter-service/target
+/treatment-plan-service/target
 /.idea
