@@ -24,6 +24,9 @@ public class Appointment {
     @JoinColumn(name="treatment_plan_id",referencedColumnName = "id")
     private TreatmentPlan treatmentPlan;
 
+    @OneToMany(mappedBy = "appointment")
+    private List<AppointmentMilestone> milestones;
+
     @ManyToMany
     @JoinTable(name = "appointment_treatment",joinColumns = @JoinColumn(name = "appointment_id"),inverseJoinColumns = @JoinColumn(name = "treatment_id"))
     private List<Treatment> treatments;

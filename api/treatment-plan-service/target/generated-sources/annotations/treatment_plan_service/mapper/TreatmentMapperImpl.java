@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
-import treatment_plan_service.dto.MilestoneDTO;
 import treatment_plan_service.dto.TreatmentDTO;
-import treatment_plan_service.entity.Milestone;
 import treatment_plan_service.entity.Treatment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-21T22:26:24+0200",
+    date = "2023-09-22T01:01:21+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
 )
 @Component
@@ -55,7 +53,6 @@ public class TreatmentMapperImpl implements TreatmentMapper {
 
         treatmentDTO.setId( bo.getId() );
         treatmentDTO.setName( bo.getName() );
-        treatmentDTO.setMilestones( milestoneListToMilestoneDTOList( bo.getMilestones() ) );
 
         return treatmentDTO;
     }
@@ -70,7 +67,6 @@ public class TreatmentMapperImpl implements TreatmentMapper {
 
         treatment.setId( dto.getId() );
         treatment.setName( dto.getName() );
-        treatment.setMilestones( milestoneDTOListToMilestoneList( dto.getMilestones() ) );
 
         return treatment;
     }
@@ -83,77 +79,7 @@ public class TreatmentMapperImpl implements TreatmentMapper {
 
         bo.setId( dto.getId() );
         bo.setName( dto.getName() );
-        if ( bo.getMilestones() != null ) {
-            List<Milestone> list = milestoneDTOListToMilestoneList( dto.getMilestones() );
-            if ( list != null ) {
-                bo.getMilestones().clear();
-                bo.getMilestones().addAll( list );
-            }
-            else {
-                bo.setMilestones( null );
-            }
-        }
-        else {
-            List<Milestone> list = milestoneDTOListToMilestoneList( dto.getMilestones() );
-            if ( list != null ) {
-                bo.setMilestones( list );
-            }
-        }
 
         return bo;
-    }
-
-    protected MilestoneDTO milestoneToMilestoneDTO(Milestone milestone) {
-        if ( milestone == null ) {
-            return null;
-        }
-
-        MilestoneDTO milestoneDTO = new MilestoneDTO();
-
-        milestoneDTO.setId( milestone.getId() );
-        milestoneDTO.setName( milestone.getName() );
-        milestoneDTO.setTreatment( toDto( milestone.getTreatment() ) );
-
-        return milestoneDTO;
-    }
-
-    protected List<MilestoneDTO> milestoneListToMilestoneDTOList(List<Milestone> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<MilestoneDTO> list1 = new ArrayList<MilestoneDTO>( list.size() );
-        for ( Milestone milestone : list ) {
-            list1.add( milestoneToMilestoneDTO( milestone ) );
-        }
-
-        return list1;
-    }
-
-    protected Milestone milestoneDTOToMilestone(MilestoneDTO milestoneDTO) {
-        if ( milestoneDTO == null ) {
-            return null;
-        }
-
-        Milestone milestone = new Milestone();
-
-        milestone.setId( milestoneDTO.getId() );
-        milestone.setName( milestoneDTO.getName() );
-        milestone.setTreatment( toBo( milestoneDTO.getTreatment() ) );
-
-        return milestone;
-    }
-
-    protected List<Milestone> milestoneDTOListToMilestoneList(List<MilestoneDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Milestone> list1 = new ArrayList<Milestone>( list.size() );
-        for ( MilestoneDTO milestoneDTO : list ) {
-            list1.add( milestoneDTOToMilestone( milestoneDTO ) );
-        }
-
-        return list1;
     }
 }

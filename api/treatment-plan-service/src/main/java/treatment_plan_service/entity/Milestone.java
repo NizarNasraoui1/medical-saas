@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,8 +20,7 @@ public class Milestone {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "treatment_id",referencedColumnName = "id")
-    private Treatment treatment;
+    @OneToMany(mappedBy = "milestone")
+    private List<AppointmentMilestone> appointmentMilestones;
 
 }

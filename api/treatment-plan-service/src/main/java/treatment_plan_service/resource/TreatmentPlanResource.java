@@ -19,7 +19,7 @@ public class TreatmentPlanResource extends GenericResource<TreatmentPlan, Treatm
         super(service);
     }
 
-    @PostMapping("/{id}/appointments")
+    @PostMapping("/{id}/appointment")
     public Mono<TreatmentPlanDTO> addAppointment(@PathVariable("id")Long id,@RequestBody AppointmentDTO appointmentDTO){
         return service.addAppointment(id,appointmentDTO);
     }

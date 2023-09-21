@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+import treatment_plan_service.dto.AddMilestoneToAppointmentDTO;
 import treatment_plan_service.dto.AddTreatmentToAppointmentDTO;
 import treatment_plan_service.dto.AppointmentDTO;
 import treatment_plan_service.entity.Appointment;
@@ -24,5 +25,10 @@ public class AppointmentResource extends GenericResource<Appointment,Appointment
     @PostMapping("/treatment")
     public Mono<AppointmentDTO> addTreatment(@RequestBody AddTreatmentToAppointmentDTO addTreatmentToAppointmentDTO){
         return service.addTreatmentToAppointment(addTreatmentToAppointmentDTO);
+    }
+
+    @PostMapping("/milestone")
+    public Mono<AppointmentDTO> addMileStone(@RequestBody AddMilestoneToAppointmentDTO addMilestoneToAppointmentDTO){
+        return service.addMilestoneToAppointment(addMilestoneToAppointmentDTO);
     }
 }

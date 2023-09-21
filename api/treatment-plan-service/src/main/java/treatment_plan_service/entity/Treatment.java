@@ -23,9 +23,6 @@ public class Treatment {
     @ManyToMany(mappedBy = "treatments")
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "treatment",cascade = CascadeType.ALL)
-    private List<Milestone> milestones;
-
 
 
 }

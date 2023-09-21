@@ -5,22 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import treatment_plan_service.entity.Appointment;
-import treatment_plan_service.entity.AppointmentTreatment;
-
-import java.util.List;
+import treatment_plan_service.entity.Milestone;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TreatmentDTO {
-
-    private Long id;
-
-    String name;
-
-    //private List<AppointmentDTO> appointments;
-
-//    private List<MilestoneDTO> milestones;
-
+public class AppointmentMilestoneDTO {
+    private MilestoneDTO milestone;
 }
