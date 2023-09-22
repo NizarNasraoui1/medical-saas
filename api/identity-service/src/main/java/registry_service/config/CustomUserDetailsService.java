@@ -1,7 +1,7 @@
 package registry_service.config;
 
-import registry_service.entity.UserCredential;
-import registry_service.repository.UserCredentialRepository;
+import registry_service.entity.User;
+import registry_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,11 +14,11 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserCredentialRepository repository;
+    private UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserCredential> credential = repository.findByName(username);
+        Optional<User> credential = repository.findByName(username);
         return credential.map(CustomUserDetails::new).orElseThrow(() -> new UsernameNotFoundException("user not found with name :" + username));
     }
 }

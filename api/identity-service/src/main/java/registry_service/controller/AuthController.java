@@ -1,7 +1,7 @@
 package registry_service.controller;
 
 import registry_service.dto.AuthRequest;
-import registry_service.entity.UserCredential;
+import registry_service.entity.User;
 import registry_service.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +19,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public String addNewUser(@RequestBody UserCredential user) {
+    public String addNewUser(@RequestBody User user) {
         return service.saveUser(user);
     }
 
