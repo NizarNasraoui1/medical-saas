@@ -18,6 +18,7 @@ public class AppointmentDTO {
     private String name;
     private AppointmentStatusEnum status = AppointmentStatusEnum.UNDONE;
     private List<AppointmentMilestoneDTO> milestones;
+    private List<AppointmentTreatmentDTO> treatments;
 
 //    @JsonFormat(pattern = "dd/MM/yyyy")
 //    private LocalDate date;

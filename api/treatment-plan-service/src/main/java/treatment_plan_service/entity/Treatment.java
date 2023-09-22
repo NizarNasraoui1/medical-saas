@@ -20,8 +20,8 @@ public class Treatment {
 
     String name;
 
-    @ManyToMany(mappedBy = "treatments")
-    private List<Appointment> appointments;
+    @OneToMany(mappedBy = "treatment")
+    private List<AppointmentTreatment> appointments;
 
 
 

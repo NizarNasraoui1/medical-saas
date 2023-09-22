@@ -12,5 +12,4 @@ import lombok.Setter;
 public class MilestoneDTO {
     private Long id;
     private String name;
-    private TreatmentDTO treatment;
 }

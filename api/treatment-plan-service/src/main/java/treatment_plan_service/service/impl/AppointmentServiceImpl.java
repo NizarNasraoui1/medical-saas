@@ -42,25 +42,26 @@ public class AppointmentServiceImpl extends GenericServiceImpl<Appointment, Appo
             Treatment treatment = tuple.getT1();
             Appointment appointment = tuple.getT2();
 
-            appointment.getTreatments().add(treatment);
-
             AppointmentTreatment appointmentTreatment = new AppointmentTreatment();
             appointmentTreatment.setAppointment(appointment);
             appointmentTreatment.setTreatment(treatment);
-            appointmentTreatment.setId(new AppointmentTreatmentKey(addTreatmentToAppointmentDTO.getAppointmentId(), addTreatmentToAppointmentDTO.getAppointmentId()));
+            appointment.getTreatments().add(appointmentTreatment);
+            treatment.getAppointments().add(appointmentTreatment);
+            appointmentTreatment.setId(new AppointmentTreatmentKey(addTreatmentToAppointmentDTO.getAppointmentId(), addTreatmentToAppointmentDTO.getTreatmentId()));
 
             return Mono.fromRunnable(() -> appointmentTreatmentRepository.save(appointmentTreatment))
                     .then(Mono.fromCallable(() -> mapper.toDto(appointment)));
         });
     }
 
+
     @Override
-    public Mono<AppointmentDTO> addMilestoneToAppointment(AddMilestoneToAppointmentDTO addTreatmentToAppointmentDTO) {
+    public Mono<AppointmentDTO> addMilestoneToAppointment(AddMilestoneToAppointmentDTO addMilestoneToAppointmentDTO) {
         return Mono.zip(
-                Mono.justOrEmpty(milestoneRepository.findById(addTreatmentToAppointmentDTO.getMilestoneId())
+                Mono.justOrEmpty(milestoneRepository.findById(addMilestoneToAppointmentDTO.getMilestoneId())
                         .orElseThrow(() -> new EntityNotFoundException())),
 
-                Mono.justOrEmpty(repository.findById(addTreatmentToAppointmentDTO.getAppointmentId())
+                Mono.justOrEmpty(repository.findById(addMilestoneToAppointmentDTO.getAppointmentId())
                         .orElseThrow(() -> new EntityNotFoundException()))
         ).flatMap(tuple -> {
             Milestone milestone = tuple.getT1();
@@ -71,8 +72,8 @@ public class AppointmentServiceImpl extends GenericServiceImpl<Appointment, Appo
             appointmentMilestone.setAppointment(appointment);
             appointmentMilestone.setMilestone(milestone);
             appointment.getMilestones().add(appointmentMilestone);
-            milestone.getAppointmentMilestones().add(appointmentMilestone);
-            appointmentMilestone.setId(new AppointmentMilestoneKey(addTreatmentToAppointmentDTO.getAppointmentId(), addTreatmentToAppointmentDTO.getMilestoneId()));
+            milestone.getAppointments().add(appointmentMilestone);
+            appointmentMilestone.setId(new AppointmentMilestoneKey(addMilestoneToAppointmentDTO.getAppointmentId(), addMilestoneToAppointmentDTO.getMilestoneId()));
 
             return Mono.fromRunnable(() -> appointmentMilestoneRepository.save(appointmentMilestone))
                     .then(Mono.fromCallable(() -> mapper.toDto(appointment)));

@@ -16,11 +16,6 @@ import java.util.List;
 public class TreatmentDTO {
 
     private Long id;
-
     String name;
-
-    //private List<AppointmentDTO> appointments;
-
-//    private List<MilestoneDTO> milestones;
 
 }

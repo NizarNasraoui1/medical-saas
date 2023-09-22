@@ -6,14 +6,18 @@ import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 import treatment_plan_service.dto.AppointmentDTO;
 import treatment_plan_service.dto.AppointmentMilestoneDTO;
+import treatment_plan_service.dto.AppointmentTreatmentDTO;
 import treatment_plan_service.dto.MilestoneDTO;
+import treatment_plan_service.dto.TreatmentDTO;
 import treatment_plan_service.entity.Appointment;
 import treatment_plan_service.entity.AppointmentMilestone;
+import treatment_plan_service.entity.AppointmentTreatment;
 import treatment_plan_service.entity.Milestone;
+import treatment_plan_service.entity.Treatment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-22T01:01:21+0200",
+    date = "2023-09-22T10:50:29+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
 )
 @Component
@@ -59,6 +63,7 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         appointmentDTO.setName( bo.getName() );
         appointmentDTO.setStatus( bo.getStatus() );
         appointmentDTO.setMilestones( appointmentMilestoneListToAppointmentMilestoneDTOList( bo.getMilestones() ) );
+        appointmentDTO.setTreatments( appointmentTreatmentListToAppointmentTreatmentDTOList( bo.getTreatments() ) );
 
         return appointmentDTO;
     }
@@ -75,6 +80,7 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         appointment.setName( dto.getName() );
         appointment.setStatus( dto.getStatus() );
         appointment.setMilestones( appointmentMilestoneDTOListToAppointmentMilestoneList( dto.getMilestones() ) );
+        appointment.setTreatments( appointmentTreatmentDTOListToAppointmentTreatmentList( dto.getTreatments() ) );
 
         return appointment;
     }
@@ -102,6 +108,22 @@ public class AppointmentMapperImpl implements AppointmentMapper {
             List<AppointmentMilestone> list = appointmentMilestoneDTOListToAppointmentMilestoneList( dto.getMilestones() );
             if ( list != null ) {
                 bo.setMilestones( list );
+            }
+        }
+        if ( bo.getTreatments() != null ) {
+            List<AppointmentTreatment> list1 = appointmentTreatmentDTOListToAppointmentTreatmentList( dto.getTreatments() );
+            if ( list1 != null ) {
+                bo.getTreatments().clear();
+                bo.getTreatments().addAll( list1 );
+            }
+            else {
+                bo.setTreatments( null );
+            }
+        }
+        else {
+            List<AppointmentTreatment> list1 = appointmentTreatmentDTOListToAppointmentTreatmentList( dto.getTreatments() );
+            if ( list1 != null ) {
+                bo.setTreatments( list1 );
             }
         }
 
@@ -146,6 +168,44 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         return list1;
     }
 
+    protected TreatmentDTO treatmentToTreatmentDTO(Treatment treatment) {
+        if ( treatment == null ) {
+            return null;
+        }
+
+        TreatmentDTO treatmentDTO = new TreatmentDTO();
+
+        treatmentDTO.setId( treatment.getId() );
+        treatmentDTO.setName( treatment.getName() );
+
+        return treatmentDTO;
+    }
+
+    protected AppointmentTreatmentDTO appointmentTreatmentToAppointmentTreatmentDTO(AppointmentTreatment appointmentTreatment) {
+        if ( appointmentTreatment == null ) {
+            return null;
+        }
+
+        AppointmentTreatmentDTO appointmentTreatmentDTO = new AppointmentTreatmentDTO();
+
+        appointmentTreatmentDTO.setTreatment( treatmentToTreatmentDTO( appointmentTreatment.getTreatment() ) );
+
+        return appointmentTreatmentDTO;
+    }
+
+    protected List<AppointmentTreatmentDTO> appointmentTreatmentListToAppointmentTreatmentDTOList(List<AppointmentTreatment> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<AppointmentTreatmentDTO> list1 = new ArrayList<AppointmentTreatmentDTO>( list.size() );
+        for ( AppointmentTreatment appointmentTreatment : list ) {
+            list1.add( appointmentTreatmentToAppointmentTreatmentDTO( appointmentTreatment ) );
+        }
+
+        return list1;
+    }
+
     protected Milestone milestoneDTOToMilestone(MilestoneDTO milestoneDTO) {
         if ( milestoneDTO == null ) {
             return null;
@@ -179,6 +239,44 @@ public class AppointmentMapperImpl implements AppointmentMapper {
         List<AppointmentMilestone> list1 = new ArrayList<AppointmentMilestone>( list.size() );
         for ( AppointmentMilestoneDTO appointmentMilestoneDTO : list ) {
             list1.add( appointmentMilestoneDTOToAppointmentMilestone( appointmentMilestoneDTO ) );
+        }
+
+        return list1;
+    }
+
+    protected Treatment treatmentDTOToTreatment(TreatmentDTO treatmentDTO) {
+        if ( treatmentDTO == null ) {
+            return null;
+        }
+
+        Treatment treatment = new Treatment();
+
+        treatment.setId( treatmentDTO.getId() );
+        treatment.setName( treatmentDTO.getName() );
+
+        return treatment;
+    }
+
+    protected AppointmentTreatment appointmentTreatmentDTOToAppointmentTreatment(AppointmentTreatmentDTO appointmentTreatmentDTO) {
+        if ( appointmentTreatmentDTO == null ) {
+            return null;
+        }
+
+        AppointmentTreatment appointmentTreatment = new AppointmentTreatment();
+
+        appointmentTreatment.setTreatment( treatmentDTOToTreatment( appointmentTreatmentDTO.getTreatment() ) );
+
+        return appointmentTreatment;
+    }
+
+    protected List<AppointmentTreatment> appointmentTreatmentDTOListToAppointmentTreatmentList(List<AppointmentTreatmentDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<AppointmentTreatment> list1 = new ArrayList<AppointmentTreatment>( list.size() );
+        for ( AppointmentTreatmentDTO appointmentTreatmentDTO : list ) {
+            list1.add( appointmentTreatmentDTOToAppointmentTreatment( appointmentTreatmentDTO ) );
         }
 
         return list1;

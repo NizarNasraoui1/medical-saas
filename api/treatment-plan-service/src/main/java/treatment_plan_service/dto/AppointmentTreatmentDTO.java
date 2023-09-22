@@ -12,7 +12,6 @@ import treatment_plan_service.entity.AppointmentTreatmentKey;
 @AllArgsConstructor
 public class AppointmentTreatmentDTO {
 
-    private AppointmentTreatmentKey id;
-    private AppointmentDTO appointment;
     private TreatmentDTO treatment;
+
 }

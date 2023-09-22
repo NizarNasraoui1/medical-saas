@@ -21,6 +21,6 @@ public class Milestone {
     private String name;
 
     @OneToMany(mappedBy = "milestone")
-    private List<AppointmentMilestone> appointmentMilestones;
+    private List<AppointmentMilestone> appointments;
 
 }
