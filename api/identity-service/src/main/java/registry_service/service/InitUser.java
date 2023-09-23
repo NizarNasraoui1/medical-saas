@@ -63,7 +63,7 @@ public class InitUser implements CommandLineRunner {
         user.setUuid(UUID.randomUUID());
         user.setPassword(passwordEncoder.encode("admin"));
         Role admin = roleRepository.findByName("SUPER_ADMIN").orElseThrow(()-> new EntityNotFoundException());
-        user.getRoles().add(admin);
+        user.setRole(admin);
         userCredentialRepository.save(user);
 
     }

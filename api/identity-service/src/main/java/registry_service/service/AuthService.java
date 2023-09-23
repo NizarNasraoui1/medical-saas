@@ -54,7 +54,7 @@ public class AuthService {
         Center center = centerRepository.findById(registerRequest.getCenterId()).orElseThrow(()->new EntityNotFoundException());
         user.setCenter(center);
         Role role = roleRepository.findById(registerRequest.getRoleId()).orElseThrow(()->new EntityNotFoundException());
-        user.getRoles().add(role);
+        user.setRole(role);
         userRepository.save(user);
         return password;
     }
