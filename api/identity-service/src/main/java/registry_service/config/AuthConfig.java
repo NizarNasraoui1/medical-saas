@@ -27,7 +27,8 @@ public class AuthConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll()
+                .requestMatchers("/auth/register", "/auth/token", "/auth/validate","/auth/center").permitAll()
+//                .requestMatchers("auth/center").hasRole("SUPER_ADMIN")
                 .and()
                 .build();
     }

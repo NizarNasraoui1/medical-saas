@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class InitUser implements CommandLineRunner {
@@ -36,15 +37,21 @@ public class InitUser implements CommandLineRunner {
 
     public void initRoles(){
         List<Role> roles = new ArrayList<>();
-        Role admin = new Role();
-        admin.setName("ADMIN");
-        roles.add(admin);
+        Role superAdmin = new Role();
+        superAdmin.setName("SUPER_ADMIN");
+        roles.add(superAdmin);
+        Role centerAdmin = new Role();
+        centerAdmin.setName("CENTER_ADMIN");
+        roles.add(centerAdmin);
         Role doctor = new Role();
         doctor.setName("DOCTOR");
         roles.add(doctor);
         Role secretary = new Role();
         secretary.setName("SECRETARY");
         roles.add(secretary);
+        Role adminDoctor = new Role();
+        adminDoctor.setName("ADMIN_DOCTOR");
+        roles.add(adminDoctor);
         roleRepository.saveAll(roles);
 
     }
@@ -53,8 +60,9 @@ public class InitUser implements CommandLineRunner {
         User user= new User();
         user.setEmail("admin");
         user.setName("admin");
+        user.setUuid(UUID.randomUUID());
         user.setPassword(passwordEncoder.encode("admin"));
-        Role admin = roleRepository.findByName("ADMIN").orElseThrow(()-> new EntityNotFoundException());
+        Role admin = roleRepository.findByName("SUPER_ADMIN").orElseThrow(()-> new EntityNotFoundException());
         user.getRoles().add(admin);
         userCredentialRepository.save(user);
 

@@ -1,7 +1,9 @@
 package registry_service.controller;
 
 import registry_service.dto.AuthRequest;
+import registry_service.dto.RegisterRequest;
 import registry_service.entity.User;
+import registry_service.exception.LoginAlreadyExistsException;
 import registry_service.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class AuthResource {
     @Autowired
     private AuthService service;
 
@@ -19,8 +21,8 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public String addNewUser(@RequestBody User user) {
-        return service.saveUser(user);
+    public String addNewUser(@RequestBody RegisterRequest registerRequest) throws LoginAlreadyExistsException {
+        return service.saveUser(registerRequest);
     }
 
     @PostMapping("/token")
