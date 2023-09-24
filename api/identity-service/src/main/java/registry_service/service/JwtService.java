@@ -5,6 +5,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import registry_service.entity.Role;
 import registry_service.repository.UserRepository;
@@ -32,7 +33,7 @@ public class JwtService {
     public String generateToken(String userName) {
         Map<String, Object> claims = new HashMap<>();
         String role = userRepository.getUserRoleName(userName);
-        claims.put("role",role);
+        claims.put("authority",role);
         return createToken(claims, userName);
     }
 
