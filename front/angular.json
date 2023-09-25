@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "sakai": {
+        "qonsult": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/sakai-ng",
+                        "outputPath": "dist/qonsult-ng",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -79,10 +79,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "sakai:build:production"
+                            "browserTarget": "qonsult:build:production"
                         },
                         "development": {
-                            "browserTarget": "sakai:build:development"
+                            "browserTarget": "qonsult:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "sakai:build"
+                        "browserTarget": "qonsult:build"
                     }
                 },
                 "test": {
@@ -112,7 +112,7 @@
             }
         }
     },
-    "defaultProject": "sakai",
+    "defaultProject": "qonsult",
     "cli": {
         "analytics": false
     }

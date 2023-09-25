@@ -1,5 +1,5 @@
 {
-    "name": "sakai-ng",
+    "name": "qonsult-ng",
     "version": "14.0.0",
     "scripts": {
         "ng": "ng",

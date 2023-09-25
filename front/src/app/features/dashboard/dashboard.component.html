@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<p-table [value]="data">
+<p-table [value]="data" class="QonsultTable">
     <ng-template pTemplate="caption">
         <div class="flex">
             <span class="p-input-icon-left p-input-wrapper">
@@ -29,6 +29,11 @@
                     (ngModelChange)="searchTreatmentPlanPage()" />
             </span>
             <button class="filterBtn">filtrer</button>
+
+            <span class="p-date-wrapper">
+                <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar> à
+                <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+            </span>
         </div>
     </ng-template>
     <ng-template pTemplate="header">

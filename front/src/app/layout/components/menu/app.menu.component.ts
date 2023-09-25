@@ -14,31 +14,35 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {
-                label: 'Home',
                 items: [
                     {
-                        label: 'Dashboard',
-                        icon: 'pi pi-fw pi-home',
+                        label: 'Tableau de bord',
+                        icon: 'pi pi-fw pi-th-large',
                         routerLink: ['/'],
                     },
-                ],
-            },
-            {
-                label: 'Fiches Patients',
-                items: [
                     {
-                        label: 'Fiches Patients',
-                        icon: 'pi pi-fw pi-id-card',
+                        label: 'Jalons',
+                        icon: 'pi pi-fw pi-sitemap',
                         routerLink: ['/contact'],
                     },
-                ],
-            },
-            {
-                label: 'Plan de traitement',
-                items: [
                     {
-                        label: 'Plan de traitement',
+                        label: 'Traitements',
                         icon: 'pi pi-fw pi-calendar-minus',
+                        routerLink: ['/treatment-plan'],
+                    },
+                    {
+                        label: 'Documents',
+                        icon: 'pi pi-fw pi-copy',
+                        routerLink: ['/treatment-plan'],
+                    },
+                    {
+                        label: 'Consentement',
+                        icon: 'pi pi-fw pi-check-circle',
+                        routerLink: ['/treatment-plan'],
+                    },
+                    {
+                        label: 'Patients',
+                        icon: 'pi pi-fw pi-users',
                         routerLink: ['/treatment-plan'],
                     },
                 ],

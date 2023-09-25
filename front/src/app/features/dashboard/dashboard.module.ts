@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
@@ -12,6 +12,7 @@ import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './service/dashboard.service';
 import { PaginatorModule } from 'primeng/paginator';
 import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     imports: [
@@ -24,6 +25,8 @@ import { InputTextModule } from 'primeng/inputtext';
         PanelMenuModule,
         ButtonModule,
         DashboardsRoutingModule,
+        CalendarModule,
+        ReactiveFormsModule,
         PaginatorModule,
         InputTextModule,
     ],

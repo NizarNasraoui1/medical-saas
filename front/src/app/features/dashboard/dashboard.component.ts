@@ -10,6 +10,7 @@ const cardsColors = ["#5dd15d", "#d15daf", "#d1cd5d", "#5da6d1", "#ffbf00", "#00
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+    date: Date | undefined;
     DashboardCards: any[] = [
         { label: 'Patients', value: '709 patients' },
         { label: 'Plan de traitements', value: '650 plans' },
